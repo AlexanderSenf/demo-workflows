@@ -1,0 +1,2 @@
+url = "http://host.docker.internal:8080/dbsnp_138.b37.vcf.gz"
+output = "dbsnp_138.b37.vcf.gz"

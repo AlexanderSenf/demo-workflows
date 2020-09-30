@@ -21,17 +21,25 @@ inputs:
     type: string?
   - id: sample_name
     type: string
+  - id: privatekey
+    type: File
+  - id: keykey
+    type: string
 
 outputs: []
 
 steps:
   - id: fastqs_in
     in:
-      - id: curl_config_file
+      - id: input_file
         source: curl_fastq_urls
+      - id: private_key
+        source: privatekey
+      - id: key_key
+        source: keykey
     out:
-      - id: in_files
-    run: curl.cwl
+      - id: unencrypted_files
+    run: crypt4gh_files.cwl
 
   - id: reference_in
     in:
@@ -63,7 +71,7 @@ steps:
     in:
       - id: raw_sequences
         source:
-          - fastqs_in/in_files
+          - fastqs_in/unencrypted_files
     out:
       - id: trimmed_fastq
     run: cutadapt-v.1.18.cwl
@@ -262,17 +270,18 @@ steps:
     run: gatk-haplotype_caller.cwl
     label: gatk-haplotype_caller
 
-  - id: encrypt
-    run: lega_upload.cwl
-    label: lega_upload.cwl
-    in:
-      - id: file_to_encrypt
-        source:
-        - gatk_haplotype_caller/gvcf
-        - gatk-base_recalibration_print_reads/bqsr_bam
-        - samtools_index/index_fai
-        - picard_markduplicates/output_metrics
-    out: []
+#  - id: encrypt
+#    run: lega_upload.cwl
+#    label: lega_upload.cwl
+#    in:
+#      - id: file_to_encrypt
+#        source:
+#        - gatk_haplotype_caller/gvcf
+#        - gatk-base_recalibration_print_reads/bqsr_bam
+#        - samtools_index/index_fai
+#        - picard_markduplicates/output_metrics
+#    out: []
 
 requirements:
   - class: MultipleInputFeatureRequirement
+  - class: SubworkflowFeatureRequirement

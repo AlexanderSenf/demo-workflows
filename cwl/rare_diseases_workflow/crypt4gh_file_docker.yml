@@ -1,0 +1,7 @@
+input_file:
+  class: File
+  path: /Users/asenf/devel/ga4gh-folder/data/U5c_CCGTCC_L001_R1_001.fastq.gz.enc
+private_key:
+  class: File
+  path: /Users/asenf/devel/ga4gh-folder/data/bob.sec.pem
+key_key: pass
