@@ -1,0 +1,39 @@
+{
+  "curl_fastq_urls": {
+    "class": "File",
+    "path": "https://raw.githubusercontent.com/AlexanderSenf/demo-workflows/demo/ga4gh-crypt4gh/cwl/rare_diseases_workflow/data/fastq_files_crypt4gh_urls.txt"
+  },
+  "curl_reference_genome_url": {
+    "class": "File",
+    "path": "https://raw.githubusercontent.com/AlexanderSenf/demo-workflows/demo/ga4gh-crypt4gh/cwl/rare_diseases_workflow/data/reference_seq_url.txt"
+  },
+  "curl_known_indels_url": {
+    "class": "File",
+    "path": "https://raw.githubusercontent.com/AlexanderSenf/demo-workflows/demo/ga4gh-crypt4gh/cwl/rare_diseases_workflow/data/known_indels_url.txt"
+  },
+  "curl_known_sites_url": {
+    "class": "File",
+    "path": "https://raw.githubusercontent.com/AlexanderSenf/demo-workflows/demo/ga4gh-crypt4gh/cwl/rare_diseases_workflow/data/known_sites_url.txt"
+  },
+  "readgroup_str": "@RG\\tID:Seq01p\\tSM:Seq01\\tPL:ILLUMINA\\tPI:330",
+  "sample_name": "abc1",
+  "threads": "10",
+  "gqb": [
+    20,
+    25,
+    30,
+    35,
+    40,
+    45,
+    50,
+    70,
+    90,
+    99
+  ],
+  "chromosome": "1",
+  "privatekey": {
+    "class": "File",
+    "path": "/Users/asenf/devel/ga4gh-folder/data/bob.sec.pem"
+  },
+  "keykey": "pass"
+}
