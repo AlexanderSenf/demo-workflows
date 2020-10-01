@@ -1,2 +1,2 @@
-url = "http://host.docker.internal:8080/hs37d5.fa.gz"
+url = "https://srv-file8.gofile.io/downloadStore/srv-store3/P2BNtu/hs37d5.fa.gz"
 output = "hs37d5.fa.gz"

@@ -1,2 +1,2 @@
-url = "http://host.docker.internal:8080/dbsnp_138.b37.vcf.gz"
+url = "https://srv-file8.gofile.io/downloadStore/srv-store3/P2BNtu/dbsnp_138.b37.vcf.gz"
 output = "dbsnp_138.b37.vcf.gz"

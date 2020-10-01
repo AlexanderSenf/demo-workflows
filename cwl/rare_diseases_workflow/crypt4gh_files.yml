@@ -1,0 +1,7 @@
+input_file:
+  class: File
+  path: https://raw.githubusercontent.com/AlexanderSenf/demo-workflows/demo/ga4gh-crypt4gh/cwl/rare_diseases_workflow/data/fastq_files_crypt4gh_urls.txt
+private_key:
+  class: File
+  path: /Users/asenf/devel/ga4gh-folder/data/bob.sec.pem
+key_key: pass

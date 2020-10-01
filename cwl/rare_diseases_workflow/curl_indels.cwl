@@ -14,12 +14,12 @@ hints:
   - class: ResourceRequirement
     coresMin: 2
     ramMin: 2000
-      
+
 inputs:
   curl_config_file:
     type: File
     inputBinding:
-      prefix: -K 
+      prefix: -K
       separate: true
       position: 1
 
@@ -28,4 +28,3 @@ outputs:
     type: File
     outputBinding:
       glob: "*.vcf"
- 
