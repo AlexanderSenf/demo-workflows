@@ -1,0 +1,8 @@
+# These files contain URLs to download input files
+# curl reads them with -K option.
+# Those can contain parameters and protocols which curl supports.
+# You can change path to a local file, which points to the urls found
+# in the comments below.
+
+curl_known_sites_url: https://srv-file8.gofile.io/downloadStore/srv-store3/P2BNtu/dbsnp_138.b37.vcf.gz
+curl_known_sites_url_output: dbsnp_138.b37.vcf.gz

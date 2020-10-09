@@ -1,6 +1,11 @@
-input_file:
-  class: File
-  path: https://raw.githubusercontent.com/AlexanderSenf/demo-workflows/demo/ga4gh-crypt4gh/cwl/rare_diseases_workflow/data/fastq_files_crypt4gh_urls.txt
+source_urls: [
+  https://srv-file8.gofile.io/downloadStore/srv-store3/P2BNtu/U5c_CCGTCC_L001_R1_001.fastq.gz.enc,
+  https://srv-file8.gofile.io/downloadStore/srv-store3/P2BNtu/U5c_CCGTCC_L001_R2_001.fastq.gz.enc
+]
+source_outputs: [
+  U5c_CCGTCC_L001_R1_001.fastq.gz.enc,
+  U5c_CCGTCC_L001_R2_001.fastq.gz.enc
+]
 private_key:
   class: File
   path: /Users/asenf/devel/ga4gh-folder/data/bob.sec.pem

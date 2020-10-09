@@ -4,29 +4,23 @@
 # You can change path to a local file, which points to the urls found
 # in the comments below.
 
-curl_fastq_urls:
-  class: File
-  path: https://raw.githubusercontent.com/AlexanderSenf/demo-workflows/demo/ga4gh-crypt4gh/cwl/rare_diseases_workflow/data/fastq_files_crypt4gh_urls.txt
+source_urls: [
+  https://srv-file8.gofile.io/downloadStore/srv-store3/P2BNtu/U5c_CCGTCC_L001_R1_001.fastq.gz.enc,
+  https://srv-file8.gofile.io/downloadStore/srv-store3/P2BNtu/U5c_CCGTCC_L001_R2_001.fastq.gz.enc
+]
+source_outputs: [
+  U5c_CCGTCC_L001_R1_001.fastq.gz.enc,
+  U5c_CCGTCC_L001_R2_001.fastq.gz.enc
+]
 
-# ftp://ftp-trace.ncbi.nih.gov/giab/ftp/data/NA12878/NIST_NA12878_HG001_HiSeq_300x/140407_D00360_0017_BH947YADXX/Project_RM8398/Sample_U5c/U5c_CCGTCC_L001_R1_001.fastq.gz
-# ftp://ftp-trace.ncbi.nih.gov/giab/ftp/data/NA12878/NIST_NA12878_HG001_HiSeq_300x/140407_D00360_0017_BH947YADXX/Project_RM8398/Sample_U5c/U5c_CCGTCC_L001_R2_001.fastq.gz
+curl_reference_genome_url: https://srv-file8.gofile.io/downloadStore/srv-store3/P2BNtu/hs37d5.fa.gz
+curl_reference_genome_url_output: hs37d5.fa.gz
 
-curl_reference_genome_url:
-  class: File
-  path: https://raw.githubusercontent.com/AlexanderSenf/demo-workflows/demo/ga4gh-crypt4gh/cwl/rare_diseases_workflow/data/reference_seq_url.txt
-# ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/technical/reference/phase2_reference_assembly_sequence/hs37d5.fa.gz
+curl_known_indels_url: https://srv-file8.gofile.io/downloadStore/srv-store3/P2BNtu/Mills_and_1000G_gold_standard.indels.b37.vcf
+curl_known_indels_url_output: Mills_and_1000G_gold_standard.indels.b37.vcf
 
-curl_known_indels_url:
-  class: File
-  path: https://raw.githubusercontent.com/AlexanderSenf/demo-workflows/demo/ga4gh-crypt4gh/cwl/rare_diseases_workflow/data/known_indels_url.txt
-
-# ftp://ftp.broadinstitute.org/bundle/b37/Mills_and_1000G_gold_standard.indels.b37.vcf.gz
-
-curl_known_sites_url:
-  class: File
-  path: https://raw.githubusercontent.com/AlexanderSenf/demo-workflows/demo/ga4gh-crypt4gh/cwl/rare_diseases_workflow/data/known_sites_url.txt
-
-# ftp://ftp.broadinstitute.org/bundle/b37/dbsnp_138.b37.vcf.gz
+curl_known_sites_url: https://srv-file8.gofile.io/downloadStore/srv-store3/P2BNtu/dbsnp_138.b37.vcf.gz
+curl_known_sites_url_output: dbsnp_138.b37.vcf.gz
 
 # This is the configuration files to download the output files for lftp client.
 # You may comment the step away from your workflow

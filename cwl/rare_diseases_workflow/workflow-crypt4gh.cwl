@@ -5,13 +5,21 @@ label: RD_Connect
 
 inputs:
   - id: curl_reference_genome_url
-    type: File
-  - id: curl_fastq_urls
-    type: File
+    type: string
+  - id: curl_reference_genome_url_output
+    type: string
+  - id: source_urls
+    type: string[]
+  - id: source_outputs
+    type: string[]
   - id: curl_known_indels_url
-    type: File
+    type: string
+  - id: curl_known_indels_url_output
+    type: string
   - id: curl_known_sites_url
-    type: File
+    type: string
+  - id: curl_known_sites_url_output
+    type: string
   - id: readgroup_str
     type: string
   - id: chromosome
@@ -31,8 +39,10 @@ outputs: []
 steps:
   - id: fastqs_in
     in:
-      - id: input_file
-        source: curl_fastq_urls
+      - id: source_urls
+        source: source_urls
+      - id: source_outputs
+        source: source_outputs
       - id: private_key
         source: privatekey
       - id: key_key
@@ -43,17 +53,19 @@ steps:
 
   - id: reference_in
     in:
-      - id: curl_config_file
+      - id: curl_url
         source: curl_reference_genome_url
+      - id: curl_output
+        source: curl_reference_genome_url_output
     out:
-      - id: in_files
-    run: curl.cwl
+      - id: in_file
+    run: curl-direct-array.cwl
 
   - id: gunzip
     in:
       - id: reference_file
         source:
-          - reference_in/in_files
+          - reference_in/in_file
     out:
       - id: unzipped_fasta
     run: gunzip.cwl
@@ -142,11 +154,13 @@ steps:
 
   - id: known_indels_in
     in:
-      - id: curl_config_file
+      - id: curl_url
         source: curl_known_indels_url
+      - id: curl_output
+        source: curl_known_indels_url_output
     out:
-      - id: known_indels_file
-    run: curl_indels.cwl
+      - id: in_file
+    run: curl-direct.cwl
 
   - id: gatk3-rtc
     in:
@@ -161,7 +175,7 @@ steps:
           - picard_dictionary/dict
       - id: known_indels
         source:
-          - known_indels_in/known_indels_file
+          - known_indels_in/in_file
     out:
       - id: rtc_intervals_file
     run: gatk3-rtc.cwl
@@ -188,17 +202,19 @@ steps:
 
   - id: known_sites_in
     in:
-      - id: curl_config_file
+      - id: curl_url
         source: curl_known_sites_url
+      - id: curl_output
+        source: curl_known_sites_url_output
     out:
-      - id: known_sites_file
-    run: curl_known_sites.cwl
+      - id: in_file
+    run: curl-direct.cwl
 
   - id: unzipped_known_sites
     in:
       - id: known_sites_file
         source:
-          - known_sites_in/known_sites_file
+          - known_sites_in/in_file
     out:
       - id: unzipped_known_sites_file
     run: gunzip_known_sites.cwl
@@ -219,7 +235,7 @@ steps:
           - unzipped_known_sites/unzipped_known_sites_file
       - id: known_indels_file
         source:
-          - known_indels_in/known_indels_file
+          - known_indels_in/in_file
       - id: threads
         source:
           - threads

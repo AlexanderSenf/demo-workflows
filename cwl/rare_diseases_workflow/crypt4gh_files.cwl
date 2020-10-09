@@ -6,7 +6,8 @@ requirements:
   - class: ScatterFeatureRequirement
 
 inputs:
-  input_file: File
+  source_urls: string[]
+  source_outputs: string[]
   private_key: File
   key_key: string
 
@@ -18,9 +19,12 @@ outputs:
 steps:
 
   download_step:
-    run: curl-crypt4gh.cwl
+    run: curl-crypt4gh-direct.cwl
+    scatter: [url, output]
+    scatterMethod: dotproduct
     in:
-      curl_config_file: input_file
+      url: source_urls
+      output: source_outputs
     out:
       [in_files]
 

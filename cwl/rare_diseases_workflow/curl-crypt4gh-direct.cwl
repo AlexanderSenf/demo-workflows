@@ -1,0 +1,33 @@
+cwlVersion: v1.0
+class: CommandLineTool
+baseCommand: ["curl"]
+
+doc: "transfer file from a remote FTP/HTTP server to the TES"
+requirements:
+  - class: DockerRequirement
+    dockerPull: jlaitinen/lftpalpine
+  - class: ResourceRequirement
+    tmpdirMin: 2500
+    outdirMin: 2500
+hints:
+  - class: ResourceRequirement
+    coresMin: 2
+    ramMin: 2000
+
+inputs:
+  url:
+    type: string
+    inputBinding:
+      prefix: --url
+      separate: true
+      position: 1
+  output:
+    type: string
+    inputBinding:
+      prefix: --output
+
+outputs:
+  in_files:
+    type: File
+    outputBinding:
+      glob: $(inputs.output)
